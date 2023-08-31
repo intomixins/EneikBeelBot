@@ -53,15 +53,11 @@ from buttons import (
 
 from dotenv import load_dotenv
 
-import openai
-
 load_dotenv()
 
 bot = Bot(token=os.environ.get('BOT_TOKEN'))
-openai.api_key = os.getenv('API_KEY')
 
 dp = Dispatcher(bot)
-MODEL = 'gpt-3.5-turbo'
 
 
 @dp.message_handler(commands=['start'])
@@ -190,19 +186,21 @@ async def option3p7(call: types.CallbackQuery) -> None:
 @dp.callback_query_handler(text='discuss')
 async def discuss(call: types.CallbackQuery) -> None:
     """ отправка сообщения менеждеру, если клиент выбрал другое """
-    await bot.send_message(chat_id=826750345, text=f'{discuss_answer}, user_id={call.from_user.id}')
+    await bot.send_message(chat_id=826750345, text=f'{discuss_answer}, user=@{call.from_user.username}')
     await call.message.answer(text=another_answer, reply_markup=basic_questions)
 
 
 @dp.message_handler()
 async def area(message: types.Message) -> None:
-    front_marker, value = message.text.split(':')[0], message.text.split(':')[1]
-    if front_marker == 'Отрасль' or front_marker == 'отрасль':
-        await bot.send_message(chat_id=826750345, text=f'Новая отрасль {value}')
-    if front_marker == 'Звонок' or front_marker == 'звонок':
-        await bot.send_message(chat_id=826750345, text=f'позвонить сюда {value}')
-    if front_marker == 'Встреча' or front_marker == 'встреча':
-        await bot.send_message(chat_id=826750345, text=f'встретиться здесь {value}')
+    # front_marker, value = message.text.split(':')[0], message.text.split(':')[1]
+    # if front_marker == 'Отрасль' or front_marker == 'отрасль':
+    #     await bot.send_message(chat_id=826750345, text=f'Новая отрасль {value}')
+    # if front_marker == 'Звонок' or front_marker == 'звонок':
+    #     await bot.send_message(chat_id=826750345, text=f'позвонить сюда {value}')
+    # if front_marker == 'Встреча' or front_marker == 'встреча':
+    #     await bot.send_message(chat_id=826750345, text=f'встретиться здесь {value}')
+    await bot.send_message(chat_id=826750345,
+                           text=f'Человечек пообщаться хочет {message.text}, user=@{message.from_user.username}')
 
 
 @dp.callback_query_handler(text='basic_answer4')
@@ -226,7 +224,7 @@ async def basic_answer6(call: types.CallbackQuery) -> None:
 @dp.callback_query_handler(text='basic_answer7')
 async def basic_answer7(call: types.CallbackQuery) -> None:
     """ ответ на 7 вопрос """
-    await call.message.answer(text=basic_answer7_text, reply_markup=question_options7)
+    await call.message.answer(text=basic_answer7_text, reply_markup=question_options7, parse_mode='html')
 
 
 @dp.callback_query_handler(text='chat')
@@ -255,7 +253,7 @@ async def chat_yes(call: types.CallbackQuery) -> None:
     """ заполнил форму """
     await call.message.answer(text=chat_yes_answer, reply_markup=another,
                               parse_mode='html')
-    await bot.send_message(chat_id=826750345, text=f'{discuss_answer}, user_id={call.from_user.id}')
+    await bot.send_message(chat_id=826750345, text=f'{discuss_answer}, user=@{call.from_user.username}')
 
 
 @dp.callback_query_handler(text='chat_no')
