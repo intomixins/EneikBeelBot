@@ -196,10 +196,13 @@ async def discuss(call: types.CallbackQuery) -> None:
 
 @dp.message_handler()
 async def area(message: types.Message) -> None:
-    front_marker = message.text.split(':')[0]
+    front_marker, value = message.text.split(':')[0], message.text.split(':')[1]
     if front_marker == 'Отрасль' or front_marker == 'отрасль':
-        print('Записано!')
-#         записать в бд + все телефоны почты и тд
+        await bot.send_message(chat_id=826750345, text=f'Новая отрасль {value}')
+    if front_marker == 'Звонок' or front_marker == 'звонок':
+        await bot.send_message(chat_id=826750345, text=f'позвонить сюда {value}')
+    if front_marker == 'Встреча' or front_marker == 'встреча':
+        await bot.send_message(chat_id=826750345, text=f'встретиться здесь {value}')
 
 
 @dp.callback_query_handler(text='basic_answer4')
@@ -238,7 +241,6 @@ async def call(call: types.CallbackQuery) -> None:
     """ выбор варианта звонок """
     await call.message.answer(text=call_answer, reply_markup=another,
                               parse_mode='html')
-    await bot.send_message(chat_id=826750345, text=f'{discuss_answer}, user_id={call.from_user.id}')
 
 
 @dp.callback_query_handler(text='meeting')
@@ -246,7 +248,6 @@ async def meeting(call: types.CallbackQuery) -> None:
     """ выбор варианта личная встреча """
     await call.message.answer(text=meeting_answer, reply_markup=another,
                               parse_mode='html')
-    await bot.send_message(chat_id=826750345, text=f'{discuss_answer}, user_id={call.from_user.id}')
 
 
 @dp.callback_query_handler(text='chat_yes')
