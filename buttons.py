@@ -7,15 +7,15 @@ basic_questions = InlineKeyboardMarkup()
 basic_question1 = InlineKeyboardButton(text='Что такое BEEL?', callback_data='basic_answer1')
 basic_question2 = InlineKeyboardButton(text='Какие возможности предоставляет BEEL?',
                                        callback_data='basic_answer2')
-basic_question3 = InlineKeyboardButton(text='Какие типы бизнесов могут воспользоваться системой BEEL?',
+basic_question3 = InlineKeyboardButton(text='Для каких бизнесов подходит BEEL?',
                                        callback_data='basic_answer3')
-basic_question4 = InlineKeyboardButton(text='Каково преимущество удобной кастомизации BEEL?',
+basic_question4 = InlineKeyboardButton(text='Каково преимущество BEEL?',
                                        callback_data='basic_answer4')
 basic_question5 = InlineKeyboardButton(text='Каковы условия оплаты за систему BEEL?',
                                        callback_data='basic_answer5')
-basic_question6 = InlineKeyboardButton(text='Какая поддержка предоставляется после настройки системы?',
+basic_question6 = InlineKeyboardButton(text='КПредоставляется ли поддержка системы?',
                                        callback_data='basic_answer6')
-basic_question7 = InlineKeyboardButton(text='Как я могу начать использовать систему BEEL?',
+basic_question7 = InlineKeyboardButton(text='Как начать использовать систему BEEL?',
                                        callback_data='basic_answer7')
 basic_question8 = InlineKeyboardButton(text='Заказать BEEL для бизнеса',
                                        callback_data='basic_answer8')
@@ -48,7 +48,7 @@ option3p2 = InlineKeyboardButton(text='Отель', callback_data='option3p2')
 option3p3 = InlineKeyboardButton(text='Коворкинг', callback_data='option3p3')
 option3p4 = InlineKeyboardButton(text='Кинотеатр / театр / концертный зал', callback_data='option3p4')
 option3p5 = InlineKeyboardButton(text='Салон красоты / здоровья', callback_data='option3p5')
-option3p6 = InlineKeyboardButton(text='Сервисы клининга / сантехнических услуг', callback_data='option3p6')
+option3p6 = InlineKeyboardButton(text='Сервисы клининга / сантехники', callback_data='option3p6')
 option3p7 = InlineKeyboardButton(text='Другое', callback_data='option3p7')
 back = InlineKeyboardButton(text='Другие вопросы', callback_data='back')
 question_options3.row(option3p1)
@@ -73,7 +73,7 @@ question_options5.row(basic_question7)
 question_options7 = InlineKeyboardMarkup()
 chat = InlineKeyboardButton(text='Чатинг', callback_data='chat')
 call = InlineKeyboardButton(text='Звонок', callback_data='call')
-meeting = InlineKeyboardButton(text='Личная встреча в Грузии или встреча с представителями',
+meeting = InlineKeyboardButton(text='Личная встреча',
                                callback_data='meeting')
 question_options7.row(chat)
 question_options7.row(call)
