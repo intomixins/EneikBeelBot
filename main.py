@@ -266,7 +266,7 @@ async def chat_no(call: types.CallbackQuery) -> None:
 @dp.callback_query_handler(text='basic_answer8')
 async def basic_answer8(call: types.CallbackQuery) -> None:
     """ ответ на 8 вопрос """
-    await call.message.answer(text=basic_answer7_text, reply_markup=question_options7)
+    await call.message.answer(text=basic_answer7_text, reply_markup=question_options7, parse_mode='html')
 
 
 @dp.message_handler(content_types='photo')
