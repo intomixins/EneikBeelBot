@@ -50,7 +50,7 @@ option3p4 = InlineKeyboardButton(text='Кинотеатр / театр / кон�
 option3p5 = InlineKeyboardButton(text='Салон красоты / здоровья', callback_data='option3p5')
 option3p6 = InlineKeyboardButton(text='Сервисы клининга / сантехники', callback_data='option3p6')
 option3p7 = InlineKeyboardButton(text='Другое', callback_data='option3p7')
-back = InlineKeyboardButton(text='Другие вопросы', callback_data='back')
+# back = InlineKeyboardButton(text='Другие вопросы', callback_data='back')
 question_options3.row(option3p1)
 question_options3.row(option3p2)
 question_options3.row(option3p3)
