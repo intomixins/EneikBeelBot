@@ -59,7 +59,7 @@ bot = Bot(token=os.environ.get('BOT_TOKEN'))
 
 dp = Dispatcher(bot)
 
-ADMIN_ID = 826750345
+ADMIN_ID = 496767712
 
 
 @dp.message_handler(commands=['start'])
@@ -67,11 +67,11 @@ async def welcome(message: types.Message) -> None:
     """ приветственное сообщение """
     await bot.send_message(message.chat.id, 'Добро пожаловать! Выберите вопрос или задайте свой.',
                            reply_markup=basic_questions)
-    
+   
 
 @dp.message_handler(commands='id')
 async def get_user_id(message: types.Message) -> None:
-    await bot.send(ADMIN_ID, f'id пользователя {message.from_user.id}')
+    await bot.send_message(ADMIN_ID, f'id пользователя {message.from_user.id}')
 
 
 @dp.callback_query_handler(text='back')
