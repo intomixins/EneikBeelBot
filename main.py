@@ -59,12 +59,19 @@ bot = Bot(token=os.environ.get('BOT_TOKEN'))
 
 dp = Dispatcher(bot)
 
+ADMIN_ID = 826750345
+
 
 @dp.message_handler(commands=['start'])
 async def welcome(message: types.Message) -> None:
     """ приветственное сообщение """
     await bot.send_message(message.chat.id, 'Добро пожаловать! Выберите вопрос или задайте свой.',
                            reply_markup=basic_questions)
+    
+
+@dp.message_handler(commands='id')
+async def get_user_id(message: types.Message) -> None:
+    await bot.send(ADMIN_ID, f'id пользователя {message.from_user.id}')
 
 
 @dp.callback_query_handler(text='back')
@@ -186,20 +193,13 @@ async def option3p7(call: types.CallbackQuery) -> None:
 @dp.callback_query_handler(text='discuss')
 async def discuss(call: types.CallbackQuery) -> None:
     """ отправка сообщения менеждеру, если клиент выбрал другое """
-    await bot.send_message(chat_id=826750345, text=f'{discuss_answer}, user=@{call.from_user.username}')
+    await bot.send_message(chat_id=ADMIN_ID, text=f'{discuss_answer}, user=@{call.from_user.username}')
     await call.message.answer(text=another_answer, reply_markup=basic_questions)
 
 
 @dp.message_handler()
 async def area(message: types.Message) -> None:
-    # front_marker, value = message.text.split(':')[0], message.text.split(':')[1]
-    # if front_marker == 'Отрасль' or front_marker == 'отрасль':
-    #     await bot.send_message(chat_id=826750345, text=f'Новая отрасль {value}')
-    # if front_marker == 'Звонок' or front_marker == 'звонок':
-    #     await bot.send_message(chat_id=826750345, text=f'позвонить сюда {value}')
-    # if front_marker == 'Встреча' or front_marker == 'встреча':
-    #     await bot.send_message(chat_id=826750345, text=f'встретиться здесь {value}')
-    await bot.send_message(chat_id=826750345,
+    await bot.send_message(chat_id=ADMIN_ID,
                            text=f'Человечек пообщаться хочет {message.text}, user=@{message.from_user.username}')
 
 
@@ -253,7 +253,7 @@ async def chat_yes(call: types.CallbackQuery) -> None:
     """ заполнил форму """
     await call.message.answer(text=chat_yes_answer, reply_markup=another,
                               parse_mode='html')
-    await bot.send_message(chat_id=826750345, text=f'{discuss_answer}, user=@{call.from_user.username}')
+    await bot.send_message(chat_id=ADMIN_ID, text=f'{discuss_answer}, user=@{call.from_user.username}')
 
 
 @dp.callback_query_handler(text='chat_no')

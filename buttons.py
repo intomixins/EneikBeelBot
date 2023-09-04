@@ -11,9 +11,9 @@ basic_question3 = InlineKeyboardButton(text='Для каких бизнесов 
                                        callback_data='basic_answer3')
 basic_question4 = InlineKeyboardButton(text='Каково преимущество BEEL?',
                                        callback_data='basic_answer4')
-basic_question5 = InlineKeyboardButton(text='Каковы условия оплаты за систему BEEL?',
+basic_question5 = InlineKeyboardButton(text='Каковы условия оплаты системы BEEL?',
                                        callback_data='basic_answer5')
-basic_question6 = InlineKeyboardButton(text='КПредоставляется ли поддержка системы?',
+basic_question6 = InlineKeyboardButton(text='Предоставляется ли поддержка системы?',
                                        callback_data='basic_answer6')
 basic_question7 = InlineKeyboardButton(text='Как начать использовать систему BEEL?',
                                        callback_data='basic_answer7')
